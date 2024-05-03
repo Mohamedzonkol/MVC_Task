@@ -1,0 +1,86 @@
+﻿@using EmployeeViewModel = Task.Models.ViewModel.EmployeeViewModel
+@model EmployeeViewModel
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2"><i class="bi bi-view-stacked"></i> Create A New Employee </h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Employee.Id" hidden />
+            <div class="border p-3">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Employee.Name" class="form-control border-0 shadow"/>
+                    <label asp-for="Employee.Name" class="ms-2"></label>
+                    <span asp-validation-for="Employee.Name" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Employee.Email" class="form-control border-0 shadow"/>
+                    <label asp-for="Employee.Email" class="ms-2"></label>
+                    <span asp-validation-for="Employee.Email" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Employee.DateOfBirth" class="form-control border-0 shadow"/>
+                    <label asp-for="Employee.DateOfBirth" class="ms-2"></label>
+                    <span asp-validation-for="Employee.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Employee.Salary" class="form-control border-0 shadow"/>
+                    <label asp-for="Employee.Salary" class="ms-2"></label>
+                    <span asp-validation-for="Employee.Salary" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Employee.PhoneNumber" class="form-control border-0 shadow" />
+                    <label asp-for="Employee.PhoneNumber" class="ms-2"></label>
+                    <span asp-validation-for="Employee.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <select asp-for="@Model.Employee.DepartmentID" asp-items="@Model.DepartmentList" class="form-select border-0 shadow">
+                        <option disabled selected>--Select Department--</option>
+                    </select>
+                    <label asp-for="Employee.DepartmentID" class="ms-2"></label>
+                    <span asp-validation-for="Employee.DepartmentID" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-2 col-12">
+                    <select asp-for="@Model.Employee.CreatedBy" asp-items="@Model.UserList" class="form-select border-0 shadow">
+                        <option disabled selected>--Select User--</option>
+                    </select>
+                    <label asp-for="Employee.CreatedBy" class="ms-2"></label>
+                    <span asp-validation-for="Employee.CreatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-floating py-1 col-12">
+                    <input asp-for="Employee.ProfileImage" hidden class="form-control border shadow" />
+                    <input asp-for="Employee.Image" class="form-control border shadow" />
+                    <label asp-for="Employee.ProfileImage" class="ms-2"></label>
+                    <span asp-validation-for="Employee.ProfileImage" class="text-danger"></span>
+                </div>
+                <div class="row pt-2">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control"><i class="bi bi-check-circle"> Create</i></button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-primary border  form-control">
+                            <i class="bi bi-x-circle"> Cancel</i>
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
