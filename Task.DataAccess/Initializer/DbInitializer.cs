@@ -6,7 +6,7 @@ namespace Task.DataAccess.Initializer
     {
         public void Initialize()
         {
-            if (!context.Employees.Any()) // Check if any employees exist (optional)
+            if (!context.Employees.Any())
             {
                 var departments = new List<Department>()
             {
@@ -18,8 +18,8 @@ namespace Task.DataAccess.Initializer
                 context.SaveChanges();
                 var users = new List<User>()
             {
-                new User { Name = "John Doe", Email = "johndoe@company.com", Password = "password" }, // Replace with password hashing mechanism
-                new User { Name = "Jane Smith", Email = "janesmith@company.com", Password = "password" } // Replace with password hashing mechanism
+                new User { Name = "John Doe", Email = "johndoe@company.com", Password = "password" },
+                new User { Name = "Jane Smith", Email = "janesmith@company.com", Password = "password" }
             };
                 context.Users.AddRange(users);
                 context.SaveChanges();
@@ -33,9 +33,9 @@ namespace Task.DataAccess.Initializer
                     Email = "alice.johnson@company.com",
                     HireDate = DateTime.Now.AddMonths(-6),
                     Salary = 50000,
-                    DepartmentID = departments[0].Id, // Reference department by ID
-                    CreatedBy = users[0].Id, // Reference user by ID for CreatedBy
-                    ModifiedBy = users[0].Id  // Reference user by ID for ModifiedBy (optional)
+                    DepartmentID = departments[0].Id,
+                    CreatedBy = users[0].Id,
+                    ModifiedBy = users[0].Id
                 },
                 new Employee
                 {
@@ -45,9 +45,9 @@ namespace Task.DataAccess.Initializer
                     Email = "bob.smith@company.com",
                     HireDate = DateTime.Now.AddMonths(-3),
                     Salary = 60000,
-                    DepartmentID = departments[2].Id, // Reference department by ID
-                    CreatedBy = users[1].Id, // Reference user by ID for CreatedBy
-                    ModifiedBy = users[1].Id  // Reference user by ID for ModifiedBy (optional)
+                    DepartmentID = departments[2].Id,
+                    CreatedBy = users[1].Id,
+                    ModifiedBy = users[1].Id
                 }
             };
                 context.Employees.AddRange(employees);
